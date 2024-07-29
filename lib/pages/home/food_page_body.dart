@@ -37,8 +37,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   void dispose() {
-    super.dispose();
     pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -53,10 +53,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     height: Dimensions.pageView,
                     child: PageView.builder(
                       controller: pageController,
-                      itemCount: popularProducts.popularProducList.length,
+                      itemCount: popularProducts.popularProductList.length,
                       itemBuilder: (context, index) {
                         return _buildPageItem(
-                            index, popularProducts.popularProducList[index]);
+                            index, popularProducts.popularProductList[index]);
                       },
                     ),
                   )
@@ -73,9 +73,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         GetBuilder<PopularProductController>(
           builder: (popularProducts) {
             return DotsIndicator(
-              dotsCount: popularProducts.popularProducList.isEmpty
+              dotsCount: popularProducts.popularProductList.isEmpty
                   ? 1
-                  : popularProducts.popularProducList.length,
+                  : popularProducts.popularProductList.length,
               position: _currentPageValue.toInt(),
               decorator: DotsDecorator(
                 activeColor: AppColors.mainColor,
@@ -130,7 +130,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Get.toNamed(RouteHelper.getRecommendedFood(index));
+                          Get.toNamed(
+                              RouteHelper.getRecommendedFood(index, "home"));
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -265,7 +266,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         children: [
           GestureDetector(
             onTap: () {
-              Get.toNamed(RouteHelper.getPopularFood(index));
+              Get.toNamed(RouteHelper.getPopularFood(index, "home"));
             },
             child: Container(
               height: Dimensions.pageViewContainer,

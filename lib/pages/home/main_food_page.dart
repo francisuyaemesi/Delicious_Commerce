@@ -1,17 +1,31 @@
+import 'package:delicious_commerce/controllers/popular_product_controller.dart';
+import 'package:delicious_commerce/controllers/recommended_product_controller.dart';
 import 'package:delicious_commerce/pages/home/food_page_body.dart';
 import 'package:delicious_commerce/utils/colors.dart';
 import 'package:delicious_commerce/utils/dimensions.dart';
 import 'package:delicious_commerce/widgets/big_text.dart';
 import 'package:delicious_commerce/widgets/small_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class MainFoodPage extends StatelessWidget {
+class MainFoodPage extends StatefulWidget {
   const MainFoodPage({super.key});
 
   @override
+  State<MainFoodPage> createState() => _MainFoodPageState();
+}
+
+class _MainFoodPageState extends State<MainFoodPage> {
+  Future<void> _loadResource() async {
+    await Get.find<PopularProductController>().getPopularProductList();
+    await Get.find<RecommendedProductController>().getRecommendedProductList();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return RefreshIndicator(
+      onRefresh: _loadResource,
+      child: Column(
         children: [
           //showing the header
           Container(
