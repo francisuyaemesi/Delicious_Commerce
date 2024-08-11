@@ -1,6 +1,7 @@
 import 'package:delicious_commerce/base/no_data_page.dart';
 import 'package:delicious_commerce/controllers/auth_controller.dart';
 import 'package:delicious_commerce/controllers/cart_controller.dart';
+import 'package:delicious_commerce/controllers/location_controller.dart';
 import 'package:delicious_commerce/controllers/popular_product_controller.dart';
 import 'package:delicious_commerce/controllers/recommended_product_controller.dart';
 import 'package:delicious_commerce/routes/route_helper.dart';
@@ -294,6 +295,13 @@ class CartPage extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           if (Get.find<AuthController>().userLoggedIn()) {
+                            if (Get.find<LocationController>()
+                                .addressList
+                                .isEmpty) {
+                              Get.toNamed(RouteHelper.getAddressPage());
+                            } else {
+                              Get.offNamed(RouteHelper.getInitial());
+                            }
                             // popularProduct.addItem(product);
                             cartController.addToHistory();
                           } else {

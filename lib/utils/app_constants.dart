@@ -17,4 +17,8 @@ class AppConstants {
   static const String PASSWORD = '';
   static const String CART_LIST = 'cart-List';
   static const String CART_HISTORY_LIST = 'cart-history-list';
+  static const String GEOCODE_URI = '/api/v1/config/geocode-api';
+  static const String USER_ADDRESS = 'user_address';
+  static const String ADD_USER_ADDRESS = '/api/v1/customer/address/add';
+  static const String ADDRESS_LIST_URI = '/api/v1/customer/address/list';
 }
