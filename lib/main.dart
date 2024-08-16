@@ -6,6 +6,7 @@ import 'package:delicious_commerce/pages/food/recommended_food_detail.dart';
 import 'package:delicious_commerce/pages/home/main_food_page.dart';
 import 'package:delicious_commerce/pages/splash/splash_page.dart';
 import 'package:delicious_commerce/routes/route_helper.dart';
+import 'package:delicious_commerce/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'helper/dependencies.dart' as dep;
@@ -30,6 +31,10 @@ class MyApp extends StatelessWidget {
           //home: SplashScreen(),
           initialRoute: RouteHelper.getSplashPage(),
           getPages: RouteHelper.routes,
+          theme: ThemeData(
+            primaryColor: AppColors.mainColor,
+            fontFamily: 'Latn',
+          ),
         );
       });
     });

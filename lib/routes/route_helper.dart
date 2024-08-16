@@ -1,4 +1,5 @@
 import 'package:delicious_commerce/pages/address/add_address_page.dart';
+import 'package:delicious_commerce/pages/address/pick_address_map.dart';
 import 'package:delicious_commerce/pages/auth/sign_in_page.dart';
 import 'package:delicious_commerce/pages/cart/cart_page.dart';
 import 'package:delicious_commerce/pages/food/popular_food_detail.dart';
@@ -16,6 +17,7 @@ class RouteHelper {
   static const String cartPage = '/cart-page';
   static const String signIn = '/sign-in';
   static const String addAddress = '/add-address';
+  static const String pickAddressMap = '/pick-address';
 
   static String getInitial() => '$initial';
   static String getSplashPage() => '$splashPage';
@@ -27,6 +29,7 @@ class RouteHelper {
   static String getCartPage() => '$cartPage';
   static String getSignInPage() => '$signIn';
   static String getAddressPage() => '$addAddress';
+  static String getPickAddressPage() => '$pickAddressMap';
 
   static List<GetPage> routes = [
     GetPage(
@@ -36,6 +39,12 @@ class RouteHelper {
         },
         transition: Transition.fade),
     GetPage(name: signIn, page: () => SignInPage()),
+    GetPage(
+        name: pickAddressMap,
+        page: () {
+          PickAddressMap _pickAddress = Get.arguments;
+          return _pickAddress;
+        }),
     GetPage(name: splashPage, page: () => SplashScreen()),
     GetPage(
         name: popularFood,
